@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Version](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/japan-opendata-lab/japan-official-data-megabank/blob/main/notebooks/japan_open_data_in_3_minutes.ipynb)
 [![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97-Hugging%20Face%20Showcase-yellow)](https://huggingface.co/datasets/japan-opendata/japan-official-data-megabank-showcase)
 [![RapidAPI Hub](https://img.shields.io/badge/Production%20API-RapidAPI%20Hub-orange)](https://rapidapi.com/organization/japan-opendata-lab)
 
@@ -10,6 +11,8 @@
 Messy quirks common in Japanese government spreadsheets (Shift_JIS encoding, Reiwa/Heisei imperial eras, merged cells, zenkaku strings, and individual proprietorship PII) have been **mechanically eliminated**. 
 
 All records are cross-linkable via the official **13-digit National Tax Agency Corporate Number (`corporate_number`)** and **5-digit JIS Municipality Code (`municipality_code`)**.
+
+👉 **[Try the 3-Minute Google Colab Recipe (Zero Setup Required)](https://colab.research.google.com/github/japan-opendata-lab/japan-official-data-megabank/blob/main/notebooks/japan_open_data_in_3_minutes.ipynb)**
 
 ---
 
