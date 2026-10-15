@@ -12,6 +12,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 from japan_opendata import JapanDataClient
 
+
 def main():
     # Replace with your actual RapidAPI Key
     api_key = os.getenv("RAPIDAPI_KEY", "YOUR_RAPIDAPI_KEY_HERE")
@@ -29,7 +30,7 @@ def main():
         df = client.to_dataframe(proc_resp)
         if not df.empty:
             cols = [c for c in ["primary_name", "legal_name", "capital_amount_jpy", "corporate_number"] if c in df.columns]
-            print(df[cols].to_string(index=False))
+            print((df[cols] if cols else df).to_string(index=False))
         else:
             print("No records returned or empty response.")
     except Exception as e:
@@ -42,11 +43,12 @@ def main():
         df_land = client.to_dataframe(land_resp)
         if not df_land.empty:
             cols = [c for c in ["area_name_local", "current_value", "yoy_change_pct"] if c in df_land.columns]
-            print(df_land[cols].to_string(index=False))
+            print((df_land[cols] if cols else df_land).to_string(index=False))
         else:
             print("No records returned or empty response.")
     except Exception as e:
         print(f"Request note: {e}")
+
 
 if __name__ == "__main__":
     main()
