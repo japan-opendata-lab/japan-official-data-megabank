@@ -8,6 +8,7 @@ import duckdb
 
 HF_BASE = "https://huggingface.co/datasets/japan-opendata/japan-official-data-megabank-showcase/resolve/main/data"
 
+
 def main():
     print("=" * 75)
     print("Multi-Table Cross-Domain Analysis (Corporate Key JOIN)")
@@ -20,7 +21,7 @@ def main():
 
     # SQL Cross-Join using the universal 13-digit corporate_number
     query = f"""
-        SELECT 
+        SELECT
             p.legal_name AS vendor_name,
             p.corporate_number,
             c.prefecture AS corporate_headquarters,
@@ -29,7 +30,7 @@ def main():
             ROUND(SUM(p.capital_amount_jpy) / 1e6, 2) AS total_award_million_jpy
         FROM read_parquet('{procurement_url}') p
         INNER JOIN read_parquet('{corporate_url}') c
-            ON p.corporate_number = c.corporate_number
+            ON CAST(p.corporate_number AS VARCHAR) = CAST(c.corporate_number AS VARCHAR)
         WHERE p.corporate_number IS NOT NULL
         GROUP BY p.legal_name, p.corporate_number, c.prefecture, c.city
         ORDER BY total_award_million_jpy DESC
@@ -45,6 +46,7 @@ def main():
         print("Note: Sample sets contain random samples; try querying individual tables or subscribe to MEGA tier for full 5M+ database joins.")
 
     print("\n[OK] Demonstration finished.")
+
 
 if __name__ == "__main__":
     main()
