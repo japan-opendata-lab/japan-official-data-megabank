@@ -8,6 +8,7 @@ import duckdb
 
 HF_BASE = "https://huggingface.co/datasets/japan-opendata/japan-official-data-megabank-showcase/resolve/main/data"
 
+
 def main():
     print("=" * 70)
     print("Japan Open Data Showcase - Instant In-Memory DuckDB Query")
@@ -19,7 +20,7 @@ def main():
     procurement_url = f"{HF_BASE}/japan_public_procurement_sample_5k.parquet"
     print("\n[1] Top 5 Suppliers by Total Public Award Value (GEPS):")
     query_proc = f"""
-        SELECT 
+        SELECT
             legal_name,
             corporate_number,
             count(*) AS total_contracts,
@@ -37,7 +38,7 @@ def main():
     land_url = f"{HF_BASE}/japan_land_prices_sample_5k.parquet"
     print("\n[2] Benchmark Land Valuation Points (MLIT):")
     query_land = f"""
-        SELECT 
+        SELECT
             area_name_local,
             current_value AS land_price_yen_per_sqm,
             yoy_change_pct,
@@ -50,6 +51,7 @@ def main():
     print(df_land.to_string(index=False))
 
     print("\n[OK] Query completed successfully.")
+
 
 if __name__ == "__main__":
     main()
