@@ -11,7 +11,6 @@ import pandas as pd
 class JapanDataClient:
     """Client for Japan Official Data Megabank API on RapidAPI."""
 
-    DEFAULT_HOST = "japan-demographics-api.onrender.com"
     RAPIDAPI_HOST = "japan-official-data-megabank-api-us-standard-normalized.p.rapidapi.com"
 
     def __init__(
